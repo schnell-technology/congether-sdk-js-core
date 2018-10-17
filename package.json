@@ -1,0 +1,12 @@
+{
+  "name": "@schnell.technology/congether-sdk-js-core",
+  "version": "1.0.0-beta.2",
+  "description": "Congether SDK for JavaScript",
+  "main": "app.js",
+  "author": {
+    "name": "schnell.technology"
+  },
+  "devDependencies": {
+    "@types/node": "^6.0.87"
+  }
+}
