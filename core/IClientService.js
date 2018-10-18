@@ -77,10 +77,12 @@ var EndpointInfo = /** @class */ (function () {
     }
     EndpointInfo.prototype.init = function (data) {
         if (data) {
+            this.privacyPolicy = data["PrivacyPolicy"] !== undefined ? data["PrivacyPolicy"] : null;
             this.installationId = data["InstallationId"] !== undefined ? data["InstallationId"] : null;
             this.deviceId = data["DeviceId"] !== undefined ? data["DeviceId"] : null;
             this.appIdentifier = data["AppIdentifier"] !== undefined ? data["AppIdentifier"] : null;
             this.appVersion = data["AppVersion"] !== undefined ? data["AppVersion"] : null;
+            this.deviceIdentifier = data["DeviceIdentifier"] !== undefined ? data["DeviceIdentifier"] : null;
             this.environment = data["Environment"] ? Environment.fromJS(data["Environment"]) : null;
         }
     };
@@ -92,10 +94,12 @@ var EndpointInfo = /** @class */ (function () {
     };
     EndpointInfo.prototype.toJSON = function (data) {
         data = typeof data === 'object' ? data : {};
+        data["PrivacyPolicy"] = this.privacyPolicy !== undefined ? this.privacyPolicy : null;
         data["InstallationId"] = this.installationId !== undefined ? this.installationId : null;
         data["DeviceId"] = this.deviceId !== undefined ? this.deviceId : null;
         data["AppIdentifier"] = this.appIdentifier !== undefined ? this.appIdentifier : null;
         data["AppVersion"] = this.appVersion !== undefined ? this.appVersion : null;
+        data["DeviceIdentifier"] = this.deviceIdentifier !== undefined ? this.deviceIdentifier : null;
         data["Environment"] = this.environment ? this.environment.toJSON() : null;
         return data;
     };
@@ -164,6 +168,7 @@ var Environment = /** @class */ (function () {
             this.runtimeIdentifier = data["RuntimeIdentifier"] !== undefined ? data["RuntimeIdentifier"] : null;
             this.oSVersion = data["OSVersion"] !== undefined ? data["OSVersion"] : null;
             this.address = data["Address"] !== undefined ? data["Address"] : null;
+            this.hostname = data["Hostname"] !== undefined ? data["Hostname"] : null;
         }
     };
     Environment.fromJS = function (data) {
@@ -179,6 +184,7 @@ var Environment = /** @class */ (function () {
         data["RuntimeIdentifier"] = this.runtimeIdentifier !== undefined ? this.runtimeIdentifier : null;
         data["OSVersion"] = this.oSVersion !== undefined ? this.oSVersion : null;
         data["Address"] = this.address !== undefined ? this.address : null;
+        data["Hostname"] = this.hostname !== undefined ? this.hostname : null;
         return data;
     };
     Environment.prototype.clone = function () {
@@ -414,9 +420,10 @@ var AppInfo = /** @class */ (function () {
 export { AppInfo };
 export var EndpointAppEventType;
 (function (EndpointAppEventType) {
-    EndpointAppEventType["Install"] = "Install";
-    EndpointAppEventType["Update"] = "Update";
-    EndpointAppEventType["Uninstall"] = "Uninstall";
+    EndpointAppEventType["Common"] = "Common";
+    EndpointAppEventType["ProvisionVersion"] = "ProvisionVersion";
+    EndpointAppEventType["ProvisionDevice"] = "ProvisionDevice";
+    EndpointAppEventType["ProvisionInstallation"] = "ProvisionInstallation";
 })(EndpointAppEventType || (EndpointAppEventType = {}));
 var SwaggerException = /** @class */ (function (_super) {
     __extends(SwaggerException, _super);

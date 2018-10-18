@@ -61,6 +61,11 @@ var CongetherClient = /** @class */ (function () {
         enumerable: true,
         configurable: true
     });
+    Object.defineProperty(CongetherClient.prototype, "deviceIdentifier", {
+        get: function () { return this._deviceIdentifier; },
+        enumerable: true,
+        configurable: true
+    });
     Object.defineProperty(CongetherClient.prototype, "requiresManifestFromService", {
         get: function () {
             return this._latestEndpointRequest == null || (this._latestEndpointRequest != null && moment(this._latestEndpointRequest).add(30, "m").isBefore(moment(new Date())));
@@ -90,14 +95,17 @@ var CongetherClient = /** @class */ (function () {
             });
         });
     };
-    CongetherClient.prototype.initialize = function (appIdentifier, baseUrl, endpoint, secret, version) {
+    CongetherClient.prototype.initialize = function (appIdentifier, baseUrl, endpoint, secret, deviceIdentifier, version) {
+        if (deviceIdentifier === void 0) { deviceIdentifier = null; }
+        if (version === void 0) { version = null; }
         this._appIdentifier = appIdentifier;
         this._version = version;
         this._baseUrl = baseUrl;
         this._endpoint = endpoint;
         this._secret = secret;
-        this.onInitialized();
+        this._deviceIdentifier = deviceIdentifier;
         this.getCongetherFiles();
+        this.onInitialized();
     };
     CongetherClient.prototype.getCongetherFiles = function () {
         return __awaiter(this, void 0, void 0, function () {
@@ -190,7 +198,7 @@ var CongetherClient = /** @class */ (function () {
     CongetherClient.prototype.getEndpointInfo = function () {
         return __awaiter(this, void 0, void 0, function () {
             return __generator(this, function (_a) {
-                return [2 /*return*/, this._endpointProvider.getEndpointInfo()];
+                return [2 /*return*/, this._endpointProvider.getEndpointInfo(this)];
             });
         });
     };

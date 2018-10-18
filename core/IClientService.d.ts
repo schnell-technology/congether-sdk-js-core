@@ -27,10 +27,12 @@ export interface IEndpointMessageQueue {
     content?: EndpointMessage[] | null;
 }
 export declare class EndpointInfo implements IEndpointInfo {
+    privacyPolicy?: string | null;
     installationId?: string | null;
     deviceId?: string | null;
     appIdentifier?: string | null;
     appVersion?: string | null;
+    deviceIdentifier?: string | null;
     environment?: Environment | null;
     constructor(data?: IEndpointInfo);
     init(data?: any): void;
@@ -39,10 +41,12 @@ export declare class EndpointInfo implements IEndpointInfo {
     clone(): EndpointInfo;
 }
 export interface IEndpointInfo {
+    privacyPolicy?: string | null;
     installationId?: string | null;
     deviceId?: string | null;
     appIdentifier?: string | null;
     appVersion?: string | null;
+    deviceIdentifier?: string | null;
     environment?: Environment | null;
 }
 export declare class EndpointMessage implements IEndpointMessage {
@@ -68,6 +72,7 @@ export declare class Environment implements IEnvironment {
     runtimeIdentifier?: string | null;
     oSVersion?: string | null;
     address?: string | null;
+    hostname?: string | null;
     constructor(data?: IEnvironment);
     init(data?: any): void;
     static fromJS(data: any): Environment;
@@ -80,6 +85,7 @@ export interface IEnvironment {
     runtimeIdentifier?: string | null;
     oSVersion?: string | null;
     address?: string | null;
+    hostname?: string | null;
 }
 export declare class EndpointAppEvent implements IEndpointAppEvent {
     appVersion?: string | null;
@@ -166,9 +172,10 @@ export interface IAppInfo {
     hasUpdate?: boolean | null;
 }
 export declare enum EndpointAppEventType {
-    Install = "Install",
-    Update = "Update",
-    Uninstall = "Uninstall",
+    Common = "Common",
+    ProvisionVersion = "ProvisionVersion",
+    ProvisionDevice = "ProvisionDevice",
+    ProvisionInstallation = "ProvisionInstallation",
 }
 export declare class SwaggerException extends Error {
     message: string;

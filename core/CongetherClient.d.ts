@@ -12,6 +12,7 @@ export declare abstract class CongetherClient {
     protected _fileHandler: ICongetherFileHandler;
     private _latestCachedManifest;
     private _latestEndpointRequest;
+    private _deviceIdentifier;
     private _commonCongetherFile;
     private _appCongetherFile;
     protected _appIdentifier: string;
@@ -22,6 +23,7 @@ export declare abstract class CongetherClient {
     readonly appIdentifier: string;
     readonly version: string;
     readonly baseUrl: string;
+    readonly deviceIdentifier: string;
     private _traceHandler;
     private _conductorHandler;
     private readonly requiresManifestFromService;
@@ -30,14 +32,14 @@ export declare abstract class CongetherClient {
     constructor();
     sendQueue(queue: EndpointMessageQueue): Promise<void>;
     protected abstract onInitialized(): any;
-    initialize(appIdentifier: string, baseUrl: string, endpoint: string, secret: string, version: null): void;
+    initialize(appIdentifier: string, baseUrl: string, endpoint: string, secret: string, deviceIdentifier?: string, version?: string): void;
     private getCongetherFiles();
     getManifest(): Promise<EndpointManifest>;
     private getManifestFromService();
     getEndpointInfo(): Promise<EndpointInfo>;
 }
 export interface IEndpointInfoProvider {
-    getEndpointInfo(): Promise<EndpointInfo>;
+    getEndpointInfo(client: CongetherClient): Promise<EndpointInfo>;
 }
 export interface ICongetherFileHandler {
     getCommonCongetherFile(): Promise<CongetherFile>;
