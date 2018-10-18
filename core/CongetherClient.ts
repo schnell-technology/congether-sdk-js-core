@@ -1,6 +1,7 @@
 ﻿import * as client from './IClientService'
 import { CongetherFile } from './CongetherFile'
-import * as moment from 'moment'
+import * as moment_ from 'moment';
+const moment = moment_;
 import { EndpointManifest, EndpointInfo, EndpointMessageQueue } from './IClientService';
 import { TraceHandler } from './TraceHandler';
 import { ConductorHandler } from './ConductorHandler';

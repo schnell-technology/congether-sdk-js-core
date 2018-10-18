@@ -6,7 +6,9 @@
 //----------------------
 // ReSharper disable InconsistentNaming
 
-import * as moment from 'moment';
+import * as moment_ from 'moment';
+const moment = moment_;
+
 
 export interface IClientService {
     /**
@@ -150,7 +152,7 @@ export interface IEndpointInfo {
 }
 
 export class EndpointMessage implements IEndpointMessage {
-    timestamp?: moment.Moment | null;
+    timestamp?: moment_.Moment | null;
     appEvent?: EndpointAppEvent | null;
     logEvent?: EndpointLogEvent | null;
     metricEvent?: EndpointMetricEvent | null;
@@ -198,7 +200,7 @@ export class EndpointMessage implements IEndpointMessage {
 }
 
 export interface IEndpointMessage {
-    timestamp?: moment.Moment | null;
+    timestamp?: moment_.Moment | null;
     appEvent?: EndpointAppEvent | null;
     logEvent?: EndpointLogEvent | null;
     metricEvent?: EndpointMetricEvent | null;
@@ -415,7 +417,7 @@ export interface IEndpointMetricEvent {
 export class VariantValue implements IVariantValue {
     boolValue?: boolean | null;
     numberValue?: number | null;
-    dateTimeValue?: moment.Moment | null;
+    dateTimeValue?: moment_.Moment | null;
     stringValue?: string | null;
 
     constructor(data?: IVariantValue) {
@@ -463,7 +465,7 @@ export class VariantValue implements IVariantValue {
 export interface IVariantValue {
     boolValue?: boolean | null;
     numberValue?: number | null;
-    dateTimeValue?: moment.Moment | null;
+    dateTimeValue?: moment_.Moment | null;
     stringValue?: string | null;
 }
 
