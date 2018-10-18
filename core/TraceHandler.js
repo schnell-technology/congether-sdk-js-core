@@ -34,7 +34,8 @@ var __generator = (this && this.__generator) || function (thisArg, body) {
     }
 };
 import { EndpointMessageQueue, EndpointMessage } from "./IClientService";
-import * as moment from 'moment';
+import * as moment_ from 'moment';
+var moment = moment_;
 var TraceHandler = /** @class */ (function () {
     function TraceHandler(_client) {
         var _this = this;

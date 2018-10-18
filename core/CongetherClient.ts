@@ -63,9 +63,9 @@ export abstract class CongetherClient {
         this._secret = secret;     
         this._deviceIdentifier = deviceIdentifier;   
         
-        this.getCongetherFiles();
+        
         this.onInitialized();
-
+        this.getCongetherFiles();
     }
 
     private async getCongetherFiles() : Promise<void> {

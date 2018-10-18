@@ -33,7 +33,8 @@ var __generator = (this && this.__generator) || function (thisArg, body) {
         if (op[0] & 5) throw op[1]; return { value: op[0] ? op[1] : void 0, done: true };
     }
 };
-import * as moment from 'moment';
+import * as moment_ from 'moment';
+var moment = moment_;
 import { TraceHandler } from './TraceHandler';
 import { ConductorHandler } from './ConductorHandler';
 export * from './IClientService';
@@ -104,8 +105,8 @@ var CongetherClient = /** @class */ (function () {
         this._endpoint = endpoint;
         this._secret = secret;
         this._deviceIdentifier = deviceIdentifier;
-        this.getCongetherFiles();
         this.onInitialized();
+        this.getCongetherFiles();
     };
     CongetherClient.prototype.getCongetherFiles = function () {
         return __awaiter(this, void 0, void 0, function () {
