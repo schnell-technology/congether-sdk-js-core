@@ -1,6 +1,7 @@
 ﻿import { EndpointMessageQueue, EndpointLogEvent, EndpointMessage, EndpointMetricEvent } from "./IClientService";
 import { CongetherClient } from "./CongetherClient";
-import * as moment from 'moment';
+import * as moment_ from 'moment';
+const moment = moment_;
 
 export class TraceHandler {
 
