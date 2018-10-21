@@ -6,16 +6,20 @@
 //----------------------
 // ReSharper disable InconsistentNaming
 var __extends = (this && this.__extends) || (function () {
-    var extendStatics = Object.setPrototypeOf ||
-        ({ __proto__: [] } instanceof Array && function (d, b) { d.__proto__ = b; }) ||
-        function (d, b) { for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p]; };
+    var extendStatics = function (d, b) {
+        extendStatics = Object.setPrototypeOf ||
+            ({ __proto__: [] } instanceof Array && function (d, b) { d.__proto__ = b; }) ||
+            function (d, b) { for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p]; };
+        return extendStatics(d, b);
+    }
     return function (d, b) {
         extendStatics(d, b);
         function __() { this.constructor = d; }
         d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
     };
 })();
-import * as moment from 'moment';
+import * as moment_ from 'moment';
+var moment = moment_;
 var EndpointMessageQueue = /** @class */ (function () {
     function EndpointMessageQueue(data) {
         if (data) {
@@ -82,7 +86,7 @@ var EndpointInfo = /** @class */ (function () {
             this.deviceId = data["DeviceId"] !== undefined ? data["DeviceId"] : null;
             this.appIdentifier = data["AppIdentifier"] !== undefined ? data["AppIdentifier"] : null;
             this.appVersion = data["AppVersion"] !== undefined ? data["AppVersion"] : null;
-            this.deviceIdentifier = data["DeviceIdentifier"] !== undefined ? data["DeviceIdentifier"] : null;
+            this.deviceKey = data["DeviceKey"] !== undefined ? data["DeviceKey"] : null;
             this.environment = data["Environment"] ? Environment.fromJS(data["Environment"]) : null;
         }
     };
@@ -99,7 +103,7 @@ var EndpointInfo = /** @class */ (function () {
         data["DeviceId"] = this.deviceId !== undefined ? this.deviceId : null;
         data["AppIdentifier"] = this.appIdentifier !== undefined ? this.appIdentifier : null;
         data["AppVersion"] = this.appVersion !== undefined ? this.appVersion : null;
-        data["DeviceIdentifier"] = this.deviceIdentifier !== undefined ? this.deviceIdentifier : null;
+        data["DeviceKey"] = this.deviceKey !== undefined ? this.deviceKey : null;
         data["Environment"] = this.environment ? this.environment.toJSON() : null;
         return data;
     };

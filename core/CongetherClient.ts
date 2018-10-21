@@ -19,7 +19,7 @@ export abstract class CongetherClient {
     private _latestCachedManifest: client.EndpointManifest = null;
     private _latestEndpointRequest: Date = null;
 
-    private _deviceIdentifier : string;
+    private _deviceKey : string;
     private _commonCongetherFile: CongetherFile;
     private _appCongetherFile: CongetherFile;
 
@@ -32,7 +32,7 @@ export abstract class CongetherClient {
     public get appIdentifier(): string { return this._appIdentifier; }
     public get version(): string { return this._version; }
     public get baseUrl(): string { return this._baseUrl; }
-    public get deviceIdentifier(): string { return this._deviceIdentifier; }
+    public get deviceKey(): string { return this._deviceKey; }
 
     private _traceHandler: TraceHandler;
     private _conductorHandler: ConductorHandler;
@@ -55,13 +55,13 @@ export abstract class CongetherClient {
 
     protected abstract onInitialized();
 
-    public initialize(appIdentifier: string, baseUrl: string, endpoint: string, secret: string, deviceIdentifier:string = null, version: string = null) {
+    public initialize(appIdentifier: string, baseUrl: string, endpoint: string, secret: string, deviceKey:string = null, version: string = null) {
         this._appIdentifier = appIdentifier;
         this._version = version;
         this._baseUrl = baseUrl;
         this._endpoint = endpoint;
         this._secret = secret;     
-        this._deviceIdentifier = deviceIdentifier;   
+        this._deviceKey = deviceKey;   
         
         
         this.onInitialized();

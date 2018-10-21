@@ -90,7 +90,7 @@ export class EndpointInfo implements IEndpointInfo {
     deviceId?: string | null;
     appIdentifier?: string | null;
     appVersion?: string | null;
-    deviceIdentifier?: string | null;
+    deviceKey?: string | null;
     environment?: Environment | null;
 
     constructor(data?: IEndpointInfo) {
@@ -109,7 +109,7 @@ export class EndpointInfo implements IEndpointInfo {
             this.deviceId = data["DeviceId"] !== undefined ? data["DeviceId"] : <any>null;
             this.appIdentifier = data["AppIdentifier"] !== undefined ? data["AppIdentifier"] : <any>null;
             this.appVersion = data["AppVersion"] !== undefined ? data["AppVersion"] : <any>null;
-            this.deviceIdentifier = data["DeviceIdentifier"] !== undefined ? data["DeviceIdentifier"] : <any>null;
+            this.deviceKey = data["DeviceKey"] !== undefined ? data["DeviceKey"] : <any>null;
             this.environment = data["Environment"] ? Environment.fromJS(data["Environment"]) : <any>null;
         }
     }
@@ -128,7 +128,7 @@ export class EndpointInfo implements IEndpointInfo {
         data["DeviceId"] = this.deviceId !== undefined ? this.deviceId : <any>null;
         data["AppIdentifier"] = this.appIdentifier !== undefined ? this.appIdentifier : <any>null;
         data["AppVersion"] = this.appVersion !== undefined ? this.appVersion : <any>null;
-        data["DeviceIdentifier"] = this.deviceIdentifier !== undefined ? this.deviceIdentifier : <any>null;
+        data["DeviceKey"] = this.deviceKey !== undefined ? this.deviceKey : <any>null;
         data["Environment"] = this.environment ? this.environment.toJSON() : <any>null;
         return data; 
     }
@@ -147,9 +147,10 @@ export interface IEndpointInfo {
     deviceId?: string | null;
     appIdentifier?: string | null;
     appVersion?: string | null;
-    deviceIdentifier?: string | null;
+    deviceKey?: string | null;
     environment?: Environment | null;
 }
+
 
 export class EndpointMessage implements IEndpointMessage {
     timestamp?: moment_.Moment | null;

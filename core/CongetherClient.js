@@ -13,8 +13,8 @@ var __generator = (this && this.__generator) || function (thisArg, body) {
     function step(op) {
         if (f) throw new TypeError("Generator is already executing.");
         while (_) try {
-            if (f = 1, y && (t = y[op[0] & 2 ? "return" : op[0] ? "throw" : "next"]) && !(t = t.call(y, op[1])).done) return t;
-            if (y = 0, t) op = [0, t.value];
+            if (f = 1, y && (t = op[0] & 2 ? y["return"] : op[0] ? y["throw"] || ((t = y["return"]) && t.call(y), 0) : y.next) && !(t = t.call(y, op[1])).done) return t;
+            if (y = 0, t) op = [op[0] & 2, t.value];
             switch (op[0]) {
                 case 0: case 1: t = op; break;
                 case 4: _.label++; return { value: op[1], done: false };
@@ -62,8 +62,8 @@ var CongetherClient = /** @class */ (function () {
         enumerable: true,
         configurable: true
     });
-    Object.defineProperty(CongetherClient.prototype, "deviceIdentifier", {
-        get: function () { return this._deviceIdentifier; },
+    Object.defineProperty(CongetherClient.prototype, "deviceKey", {
+        get: function () { return this._deviceKey; },
         enumerable: true,
         configurable: true
     });
@@ -96,15 +96,15 @@ var CongetherClient = /** @class */ (function () {
             });
         });
     };
-    CongetherClient.prototype.initialize = function (appIdentifier, baseUrl, endpoint, secret, deviceIdentifier, version) {
-        if (deviceIdentifier === void 0) { deviceIdentifier = null; }
+    CongetherClient.prototype.initialize = function (appIdentifier, baseUrl, endpoint, secret, deviceKey, version) {
+        if (deviceKey === void 0) { deviceKey = null; }
         if (version === void 0) { version = null; }
         this._appIdentifier = appIdentifier;
         this._version = version;
         this._baseUrl = baseUrl;
         this._endpoint = endpoint;
         this._secret = secret;
-        this._deviceIdentifier = deviceIdentifier;
+        this._deviceKey = deviceKey;
         this.onInitialized();
         this.getCongetherFiles();
     };

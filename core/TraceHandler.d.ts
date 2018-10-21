@@ -11,7 +11,7 @@ export declare class TraceHandler {
     constructor(_client: CongetherClient);
     log(log: EndpointLogEvent): Promise<void>;
     metric(metric: EndpointMetricEvent): Promise<void>;
-    private getCurrentQueue();
-    private workQueue();
-    private sendQueue(queueToSend);
+    private getCurrentQueue;
+    private workQueue;
+    private sendQueue;
 }

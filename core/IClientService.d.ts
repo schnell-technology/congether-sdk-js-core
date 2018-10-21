@@ -1,4 +1,4 @@
-import * as moment from 'moment';
+import * as moment_ from 'moment';
 export interface IClientService {
     /**
      * @param eventQueue (optional)
@@ -32,7 +32,7 @@ export declare class EndpointInfo implements IEndpointInfo {
     deviceId?: string | null;
     appIdentifier?: string | null;
     appVersion?: string | null;
-    deviceIdentifier?: string | null;
+    deviceKey?: string | null;
     environment?: Environment | null;
     constructor(data?: IEndpointInfo);
     init(data?: any): void;
@@ -46,11 +46,11 @@ export interface IEndpointInfo {
     deviceId?: string | null;
     appIdentifier?: string | null;
     appVersion?: string | null;
-    deviceIdentifier?: string | null;
+    deviceKey?: string | null;
     environment?: Environment | null;
 }
 export declare class EndpointMessage implements IEndpointMessage {
-    timestamp?: moment.Moment | null;
+    timestamp?: moment_.Moment | null;
     appEvent?: EndpointAppEvent | null;
     logEvent?: EndpointLogEvent | null;
     metricEvent?: EndpointMetricEvent | null;
@@ -61,7 +61,7 @@ export declare class EndpointMessage implements IEndpointMessage {
     clone(): EndpointMessage;
 }
 export interface IEndpointMessage {
-    timestamp?: moment.Moment | null;
+    timestamp?: moment_.Moment | null;
     appEvent?: EndpointAppEvent | null;
     logEvent?: EndpointLogEvent | null;
     metricEvent?: EndpointMetricEvent | null;
@@ -131,7 +131,7 @@ export interface IEndpointMetricEvent {
 export declare class VariantValue implements IVariantValue {
     boolValue?: boolean | null;
     numberValue?: number | null;
-    dateTimeValue?: moment.Moment | null;
+    dateTimeValue?: moment_.Moment | null;
     stringValue?: string | null;
     constructor(data?: IVariantValue);
     init(data?: any): void;
@@ -142,7 +142,7 @@ export declare class VariantValue implements IVariantValue {
 export interface IVariantValue {
     boolValue?: boolean | null;
     numberValue?: number | null;
-    dateTimeValue?: moment.Moment | null;
+    dateTimeValue?: moment_.Moment | null;
     stringValue?: string | null;
 }
 export declare class EndpointManifest implements IEndpointManifest {
@@ -175,7 +175,7 @@ export declare enum EndpointAppEventType {
     Common = "Common",
     ProvisionVersion = "ProvisionVersion",
     ProvisionDevice = "ProvisionDevice",
-    ProvisionInstallation = "ProvisionInstallation",
+    ProvisionInstallation = "ProvisionInstallation"
 }
 export declare class SwaggerException extends Error {
     message: string;
