@@ -1,8 +1,9 @@
 {
   "name": "@schnell.technology/congether-sdk-js-core",
-  "version": "1.0.0-beta.2",
+  "version": "1.0.0",
   "description": "Congether SDK for JavaScript",
-  "main": "index.js",
+  "main": "index.js",  
+  "license": "MIT",
   "author": {
     "name": "schnell.technology"
   },
